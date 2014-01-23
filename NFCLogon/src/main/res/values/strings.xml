@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NFCLogon</string>
+    <string name="waiting_for_pc">Waiting for PC...</string>
+    <string name="data_received">Data received from PC.</string>
+    <string name="please_scan">Scan the tag to write to it.</string>
+    <string name="tag_written">The tag has been written.</string>
+    <string name="setup_completed">Setup completed!</string>
 </resources>

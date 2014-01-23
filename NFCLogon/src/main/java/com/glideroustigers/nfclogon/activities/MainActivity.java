@@ -2,6 +2,7 @@ package com.glideroustigers.nfclogon.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.ViewFlipper;
 
 import com.glideroustigers.nfclogon.R;
 
