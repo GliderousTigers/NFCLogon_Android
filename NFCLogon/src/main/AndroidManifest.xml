@@ -11,13 +11,14 @@
         <activity android:name="com.glideroustigers.nfclogon.activities.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.glideroustigers.nfclogon.activities.ClientActivity"
-            android:label="Client Activity" >
+            android:label="Client Activity">
+        </activity>
+        <activity android:name="com.glideroustigers.nfclogon.activities.ServerActivity">
         </activity>
     </application>
 

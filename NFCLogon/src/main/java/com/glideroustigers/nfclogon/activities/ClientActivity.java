@@ -1,17 +1,30 @@
 package com.glideroustigers.nfclogon.activities;
 
+import com.glideroustigers.nfclogon.R;
+import android.app.Activity;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.appcompat.R;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
+import android.widget.EditText;
 
-public class ClientActivity extends ActionBarActivity {
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
+
+public class ClientActivity extends Activity {
 
     private EditText serverIp;
 
@@ -28,12 +41,12 @@ public class ClientActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client);
 
-        serverIp = (EditText) findViewById(R.id.server_ip);
+        serverIp = (EditText) findViewById(R.id.serverIp);
         connectPhones = (Button) findViewById(R.id.connect_phones);
         connectPhones.setOnClickListener(connectListener);
     }
 
-    private OnClickListener connectListener = new OnClickListener() {
+    private View.OnClickListener connectListener = new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {
@@ -60,8 +73,7 @@ public class ClientActivity extends ActionBarActivity {
                         Log.d("ClientActivity", "C: Sending command.");
                         PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket
                                 .getOutputStream())), true);
-                        // WHERE YOU ISSUE THE COMMANDS
-                        out.println("Hey Server!");
+                        out.println("Plop!");
                         Log.d("ClientActivity", "C: Sent.");
                     } catch (Exception e) {
                         Log.e("ClientActivity", "S: Error", e);
