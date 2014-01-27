@@ -1,6 +1,13 @@
 <component name="libraryTable">
   <library name="ComAndroidSupportAppcompatV71900.aar">
+<<<<<<< HEAD
     <CLASSES />
+=======
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/NFCLogon/build/exploded-bundles/ComAndroidSupportAppcompatV71900.aar/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/NFCLogon/build/exploded-bundles/ComAndroidSupportAppcompatV71900.aar/res" />
+    </CLASSES>
+>>>>>>> fe1f90738122ab6d72f9c0a1562714dbc3ed43a2
     <JAVADOC />
     <SOURCES />
   </library>
