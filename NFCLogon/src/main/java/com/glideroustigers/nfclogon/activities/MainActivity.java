@@ -9,6 +9,7 @@ import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.os.Parcelable;
 import android.util.Log;
+import android.widget.TextView;
 
 
 import com.glideroustigers.nfclogon.R;
@@ -22,8 +23,10 @@ public class MainActivity extends Activity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        super.onCreate(savedInstanceState);
+       // super.onCreate(savedInstanceState);
         this.setContentView(R.layout.main_activity);
+        TextView textView = (TextView) findViewById(R.id.derp);
+        textView.setText("First String");
         resolveIntent(getIntent());
     }
 
@@ -49,11 +52,10 @@ public class MainActivity extends Activity
                 NdefMessage msg = new NdefMessage(new NdefRecord[] {record});
                 msgs = new NdefMessage[] {msg};
             }
-            // Setup the views
-            //buildTagViews(msgs);
+            TextView textView = (TextView) findViewById(R.id.derp);
+            textView.setText(new String(msgs[0].getRecords()[0].getPayload()));
         } else {
             Log.e(TAG, "Unknown intent " + intent);
-            finish();
             return;
         }
     }
