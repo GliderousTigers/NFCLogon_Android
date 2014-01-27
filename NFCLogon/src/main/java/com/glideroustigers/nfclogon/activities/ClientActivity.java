@@ -3,11 +3,8 @@ package com.glideroustigers.nfclogon.activities;
 import com.glideroustigers.nfclogon.R;
 import android.app.Activity;
 import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.appcompat.R;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -39,7 +36,7 @@ public class ClientActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.client);
+        setContentView(com.glideroustigers.nfclogon.R.layout.client);
 
         serverIp = (EditText) findViewById(R.id.serverIp);
         connectPhones = (Button) findViewById(R.id.connect_phones);
