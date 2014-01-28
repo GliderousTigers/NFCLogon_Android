@@ -22,12 +22,6 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.glideroustigers.nfclogon.activities.ClientActivity"
-            android:label="Client Activity">
-        </activity>
-        <activity android:name="com.glideroustigers.nfclogon.activities.ServerActivity">
-        </activity>
     </application>
 
 </manifest>
