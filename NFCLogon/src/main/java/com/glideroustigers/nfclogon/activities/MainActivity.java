@@ -23,7 +23,7 @@ public class MainActivity extends Activity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-       // super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
         this.setContentView(R.layout.main_activity);
         TextView textView = (TextView) findViewById(R.id.derp);
         textView.setText("First String");
@@ -33,7 +33,7 @@ public class MainActivity extends Activity
     void resolveIntent(Intent intent) {
         // Parse the intent
         String action = intent.getAction();
-        if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)) {
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
             // When a tag is discovered we send it to the service to be save. We
             // include a PendingIntent for the service to call back onto. This
             // will cause this activity to be restarted with onNewIntent(). At
@@ -55,7 +55,8 @@ public class MainActivity extends Activity
             TextView textView = (TextView) findViewById(R.id.derp);
             textView.setText(new String(msgs[0].getRecords()[0].getPayload()));
         } else {
-            Log.e(TAG, "Unknown intent " + intent);
+            TextView textView = (TextView) findViewById(R.id.derp);
+            textView.setText("Nope");
             return;
         }
     }
