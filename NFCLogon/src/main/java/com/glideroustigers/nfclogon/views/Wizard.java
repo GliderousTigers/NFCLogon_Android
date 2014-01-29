@@ -18,12 +18,6 @@ public class Wizard extends RelativeLayout
     public Wizard(Context context, AttributeSet attrs)
     {
         super(context, attrs);
-        this.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextPage();
-            }
-        });
     }
 
     @Override
