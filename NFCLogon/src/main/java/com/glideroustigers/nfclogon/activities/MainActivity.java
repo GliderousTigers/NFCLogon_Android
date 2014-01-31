@@ -8,7 +8,6 @@ import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.os.Parcelable;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
