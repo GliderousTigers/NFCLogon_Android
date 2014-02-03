@@ -12,6 +12,16 @@ import java.util.UUID;
 
 public abstract class Device
 {
+    public static final String getName()
+    {
+        return Build.BRAND + " " + Build.MODEL;
+    }
+
+    public static final String getVersion()
+    {
+        return Build.VERSION.RELEASE;
+    }
+
     public static String getUUID(Context context)
     {
         SharedPreferences prefs = context.getSharedPreferences(context.getString(R.string.pref_device_file), Context.MODE_PRIVATE);
