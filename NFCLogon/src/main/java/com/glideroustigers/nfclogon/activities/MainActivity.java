@@ -21,6 +21,7 @@ public class MainActivity extends Activity
 {
     private static final String TAG = "MainActivity";
     public static String PACKAGE_NAME;
+    private String payload;
     NfcAdapter mNfcAdapter;
 
     @Override
@@ -45,6 +46,9 @@ public class MainActivity extends Activity
                     msgs[i] = (NdefMessage) rawMsgs[i];
 
                 }
+                payload = new String(msgs[0].getRecords()[0].getPayload());
+                payload = payload.substring(3);
+                HandshakeClient hsc = new HandshakeClient(payload.getBytes(), this);
             } else {
                 // Unknown tag type
                 byte[] empty = new byte[] {};
@@ -52,8 +56,11 @@ public class MainActivity extends Activity
                 NdefMessage msg = new NdefMessage(new NdefRecord[] {record});
                 msgs = new NdefMessage[] {msg};
                 Log.d(TAG, new String(msgs[0].getRecords()[0].getPayload()));
+                payload = new String(msgs[0].getRecords()[0].getPayload());
+                payload = payload.substring(3);
+                HandshakeClient hsc = new HandshakeClient(payload.getBytes(), this);
             }
-            HandshakeClient hsc = new HandshakeClient(new String(msgs[0].getRecords()[0].getPayload()), this);
+
             Toast.makeText(this,"Done", Toast.LENGTH_SHORT).show();
             finish();
 
