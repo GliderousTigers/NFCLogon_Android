@@ -2,6 +2,7 @@ package com.glideroustigers.nfclogon.activities;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -46,8 +47,8 @@ public class HandshakeClient {
 
         public void run() {
             try {
-                InetAddress serverInetAddr = InetAddress.getByName("jerome-pc");
-                Toast.makeText(ctx, serverInetAddr.getHostAddress(), Toast.LENGTH_LONG).show();
+                InetAddress serverInetAddr = InetAddress.getByName("");
+                Log.d("HandshakeClient", serverInetAddr.getHostAddress());
                 Socket socket = new Socket(serverInetAddr, PC_APP_PORT);
                 Log.d("HandshakeClient", "C: Connecting...");
                 connected = true;
