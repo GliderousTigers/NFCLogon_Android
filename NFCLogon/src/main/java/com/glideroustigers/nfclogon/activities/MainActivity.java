@@ -1,6 +1,7 @@
 package com.glideroustigers.nfclogon.activities;
 
 import android.app.Activity;
+import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.nfc.NfcAdapter;
 import android.content.Intent;
@@ -13,23 +14,27 @@ import android.widget.Toast;
 
 import com.glideroustigers.nfclogon.R;
 
+import static android.nfc.NdefRecord.createMime;
 
 
 public class MainActivity extends Activity
 {
     private static final String TAG = "MainActivity";
+    public static String PACKAGE_NAME;
+    NfcAdapter mNfcAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        PACKAGE_NAME = getApplicationContext().getPackageName();
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.main_activity);
+        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         resolveIntent(getIntent());
+
     }
 
     void resolveIntent(Intent intent) {
-        // Parse the intent
-       // TextView textView = (TextView) findViewById(R.id.derp);
         String action = intent.getAction();
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
             Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
@@ -40,8 +45,6 @@ public class MainActivity extends Activity
                     msgs[i] = (NdefMessage) rawMsgs[i];
 
                 }
-            Toast.makeText(this, new String(msgs[0].getRecords()[0].getPayload()), Toast.LENGTH_SHORT).show();
-            finish();
             } else {
                 // Unknown tag type
                 byte[] empty = new byte[] {};
@@ -50,12 +53,12 @@ public class MainActivity extends Activity
                 msgs = new NdefMessage[] {msg};
                 Log.d(TAG, new String(msgs[0].getRecords()[0].getPayload()));
             }
-            Toast.makeText(this, new String(msgs[0].getRecords()[0].getPayload()), Toast.LENGTH_SHORT).show();
+            HandshakeClient hsc = new HandshakeClient(new String(msgs[0].getRecords()[0].getPayload()), this);
+            Toast.makeText(this,"Done", Toast.LENGTH_SHORT).show();
             finish();
 
-        }
-        else
-            return;
+
+            }
         }
     }
 
