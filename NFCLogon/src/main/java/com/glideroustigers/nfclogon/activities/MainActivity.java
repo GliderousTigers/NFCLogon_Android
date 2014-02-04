@@ -14,10 +14,12 @@ import android.widget.Toast;
 
 import com.glideroustigers.nfclogon.R;
 
+import static android.nfc.NdefRecord.createMime;
 
 
 public class MainActivity extends Activity
 {
+    public String PACKAGE_NAME = this.getPackageName();
     private static final String TAG = "MainActivity";
 
     @Override
@@ -30,7 +32,6 @@ public class MainActivity extends Activity
 
     void resolveIntent(Intent intent) {
         // Parse the intent
-       // TextView textView = (TextView) findViewById(R.id.derp);
         String action = intent.getAction();
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
             Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
@@ -58,6 +59,23 @@ public class MainActivity extends Activity
         else
             return;
         }
+
+        public NdefMessage createNdefMessage(String text) {
+        NdefMessage msg = new NdefMessage(
+                new NdefRecord[] { createMime(
+                        "text/ascii", text.getBytes()),
+                });
+        return msg;
+        }
+
+         public NdefMessage createAppNdef(){
+        String text = PACKAGE_NAME;
+        NdefMessage msg = new NdefMessage(
+                new NdefRecord[] {createMime(
+                        "application", text.getBytes()),
+                });
+        return msg;
+         }
     }
 
 
