@@ -1,14 +1,15 @@
 package com.glideroustigers.nfclogon.comm.bluetooth;
 
+import com.glideroustigers.nfclogon.comm.Comm;
 import com.glideroustigers.nfclogon.comm.CommResponse;
 
 import java.io.IOException;
 
 public class BTCommResponse extends CommResponse
 {
-    BTCommResponse(byte[] data)
+    BTCommResponse(Comm comm, byte[] data)
     {
-        super(data);
+        super(comm, data);
     }
 
     @Override

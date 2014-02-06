@@ -1,8 +1,11 @@
 package com.glideroustigers.nfclogon.comm;
 
+import android.os.Handler;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.logging.LogRecord;
 
 public abstract class Comm implements Closeable
 {
@@ -10,11 +13,14 @@ public abstract class Comm implements Closeable
     private boolean closed;
     private Thread thread;
 
+    final Handler handler;
+
     public Comm()
     {
         this.listeners = new LinkedList<CommListener>();
         this.closed = false;
         this.thread = new Thread(new CommRunnable());
+        this.handler = new Handler();
     }
 
     public void start()

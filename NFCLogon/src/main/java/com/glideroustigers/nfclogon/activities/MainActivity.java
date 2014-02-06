@@ -2,6 +2,7 @@ package com.glideroustigers.nfclogon.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.glideroustigers.nfclogon.R;
 import com.glideroustigers.nfclogon.comm.Comm;
@@ -38,15 +39,22 @@ public class MainActivity extends Activity implements CommListener
     }
 
     @Override
-    public void onDataReceived(CommResponse response)
+    public void onDataReceived(final CommResponse response)
     {
-        try
-        {
-            response.reply(response.data);
-        }
-        catch (IOException e)
-        {
+        response.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainActivity.this, new String(response.data), Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        }
+//        try
+//        {
+//            response.reply(response.data);
+//        }
+//        catch (IOException e)
+//        {
+//
+//        }
     }
 }

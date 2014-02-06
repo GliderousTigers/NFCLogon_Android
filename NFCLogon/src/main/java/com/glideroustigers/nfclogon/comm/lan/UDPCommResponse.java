@@ -9,21 +9,21 @@ import java.net.SocketAddress;
 
 public class UDPCommResponse extends CommResponse
 {
-    private UDPComm discovery;
-    public final SocketAddress from;
+    private UDPComm comm;
+    private final SocketAddress from;
     private final DatagramSocket socket;
 
-    UDPCommResponse(UDPComm discovery, DatagramSocket socket, byte[] data, SocketAddress from)
+    UDPCommResponse(UDPComm comm, DatagramSocket socket, byte[] data, SocketAddress from)
     {
-        super(data);
-        this.discovery = discovery;
+        super(comm, data);
+        this.comm = comm;
         this.from = from;
         this.socket = socket;
     }
 
     public void reply(byte[] data) throws IOException
     {
-        this.discovery.stopBroadcasting();
+        this.comm.stopBroadcasting();
         this.socket.send(new DatagramPacket(data, data.length, this.from));
     }
 }
