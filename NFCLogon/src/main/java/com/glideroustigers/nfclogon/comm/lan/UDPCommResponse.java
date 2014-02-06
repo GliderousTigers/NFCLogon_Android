@@ -1,21 +1,22 @@
-package com.glideroustigers.nfclogon.network.lan;
+package com.glideroustigers.nfclogon.comm.lan;
+
+import com.glideroustigers.nfclogon.comm.CommResponse;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketAddress;
 
-public class UDPDiscoveryResponse
+public class UDPCommResponse extends CommResponse
 {
-    private UDPDiscovery discovery;
-    public final byte[] data;
+    private UDPComm discovery;
     public final SocketAddress from;
     private final DatagramSocket socket;
 
-    UDPDiscoveryResponse(UDPDiscovery discovery, DatagramSocket socket, byte[] data, SocketAddress from)
+    UDPCommResponse(UDPComm discovery, DatagramSocket socket, byte[] data, SocketAddress from)
     {
+        super(data);
         this.discovery = discovery;
-        this.data = data;
         this.from = from;
         this.socket = socket;
     }
