@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.logging.LogRecord;
 
+/**
+ * Base class ...
+ */
 public abstract class Comm implements Closeable
 {
     private volatile LinkedList<CommListener> listeners;

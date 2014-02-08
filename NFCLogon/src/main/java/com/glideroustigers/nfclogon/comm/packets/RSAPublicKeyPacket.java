@@ -9,28 +9,48 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Class that represents a packet encapsulating an RSA public key.
+ */
 public class RSAPublicKeyPacket extends AbstractPacket
 {
-    static final String PACKET_TYPE = "PK";
+    /**
+     * The name of this packet type.
+     */
+    public static final String PACKET_TYPE = "PK";
 
+    // the public key itself
     private RSAPublicKey key;
 
+    // default constructor needed for AbstractPacket.get()
     RSAPublicKeyPacket()
     {
         super(PACKET_TYPE);
     }
 
+    /**
+     * Construct a new {@link java.security.interfaces.RSAPublicKey} from the public
+     * key to send.
+     * @param key the public key to send.
+     */
     public RSAPublicKeyPacket(RSAPublicKey key)
     {
         this();
         this.key = key;
     }
 
+    /**
+     * Gets the public key encapsulated in this packet.
+     * @return the public key encapsulated in this packet.
+     */
     public RSAPublicKey getPublicKey()
     {
         return this.key;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected ArrayList<PacketField> getFields()
     {
@@ -40,6 +60,9 @@ public class RSAPublicKeyPacket extends AbstractPacket
         return fields;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void onParseFinished() throws InvalidPacketException
     {
