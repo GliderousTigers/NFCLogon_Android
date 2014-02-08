@@ -17,7 +17,7 @@ public abstract class CommResponse
 
     public abstract void reply(byte[] data) throws IOException;
 
-    public void runOnUiThread(Runnable r)
+    public final void runOnUiThread(Runnable r)
     {
         this.handler.post(r);
     }

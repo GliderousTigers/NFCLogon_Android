@@ -41,20 +41,6 @@ public class MainActivity extends Activity implements CommListener
     @Override
     public void onDataReceived(final CommResponse response)
     {
-        response.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(MainActivity.this, new String(response.data), Toast.LENGTH_SHORT).show();
-            }
-        });
 
-//        try
-//        {
-//            response.reply(response.data);
-//        }
-//        catch (IOException e)
-//        {
-//
-//        }
     }
 }
