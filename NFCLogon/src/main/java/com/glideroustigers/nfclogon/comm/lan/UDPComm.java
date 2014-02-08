@@ -63,12 +63,12 @@ public class UDPComm extends Comm
                 {
                     this.socket.receive(this.receivePacket);
                     byte[] data = Arrays.copyOfRange(this.buffer,
-                            this.receivePacket.getOffset(),
-                            this.receivePacket.getOffset() + this.receivePacket.getLength());
+                                                     this.receivePacket.getOffset(),
+                                                     this.receivePacket.getOffset() + this.receivePacket.getLength());
                     this.notifyListeners(new UDPCommResponse(UDPComm.this,
-                            this.socket,
-                            data,
-                            this.receivePacket.getSocketAddress()));
+                                                             this.socket,
+                                                             data,
+                                                             this.receivePacket.getSocketAddress()));
                 }
                 catch (SocketTimeoutException e)
                 {
