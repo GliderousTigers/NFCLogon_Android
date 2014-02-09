@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="pref_device_file">device</string>
-    <string name="pref_key_uuid">uuid</string>
+    <string name="pref_key_uuid">udid</string>
 </resources>
