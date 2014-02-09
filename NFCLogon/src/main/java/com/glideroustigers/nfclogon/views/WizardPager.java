@@ -28,13 +28,8 @@ class WizardPager extends ViewPager
         return false;
     }
 
-    void nextPage()
+    void setPage(int index)
     {
-        this.setCurrentItem(this.getCurrentItem() + 1, true);
-    }
-
-    void previousPage()
-    {
-        this.setCurrentItem(this.getCurrentItem() - 1, true);
+        this.setCurrentItem(index, true);
     }
 }

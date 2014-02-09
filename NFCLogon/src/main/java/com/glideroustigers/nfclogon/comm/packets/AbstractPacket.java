@@ -7,10 +7,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /**
- * Base class for different packets that passing from the Android device
+ * Base class for different packets passing from the Android device
  * to the PC and vice-versa during pairing and the unlocking handshake.
  * All subclasses must have a default constructor taking no parameter
  * with package access level.
+ * @author Alexandre Cormier
  */
 public abstract class AbstractPacket
 {

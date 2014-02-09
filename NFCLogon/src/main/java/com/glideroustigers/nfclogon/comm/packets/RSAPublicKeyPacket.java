@@ -11,6 +11,7 @@ import java.util.Arrays;
 
 /**
  * Class that represents a packet encapsulating an RSA public key.
+ * @author Alexandre Cormier
  */
 public class RSAPublicKeyPacket extends AbstractPacket
 {

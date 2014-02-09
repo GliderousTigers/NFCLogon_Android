@@ -23,21 +23,22 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
 /**
- * Utility class to perform crypography-related operations.
- * It uses RSA for asymetric keys and AES for symetric keys.
+ * Utility class to perform cryptography-related operations.
+ * It uses RSA for asymmetric keys and AES for symmetric keys.
+ * @author Alexandre Cormier
  */
 public final class Crypto
 {
-    // algorithm to use for asymetric keys used for key transport
+    // algorithm to use for asymmetric keys used for key transport
     private static final String KEY_TRANSPORT_ALGORITHM = "RSA";
 
-    // size of asymetric keys used for key transport
+    // size of asymmetric keys used for key transport
     private static final int TRANSPORT_KEY_SIZE = 1024;
 
-    // algorithm to use for symetric keys used for encryption
+    // algorithm to use for symmetric keys used for encryption
     private static final String ENCRYPTION_ALGORITHM = "AES";
 
-    // size of the symetric keys used for encryption
+    // size of the symmetric keys used for encryption
     private static final int ENCRYPTION_KEY_SIZE = 256;
 
     /**

@@ -7,6 +7,7 @@ import java.io.IOException;
 /**
  * Class to encapsulate the data received from a communication and provide
  * some methods that will be useful when receiving data, namely to reply.
+ * @author Alexandre Cormier
  */
 public abstract class CommResponse
 {

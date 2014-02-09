@@ -7,19 +7,37 @@ import android.widget.RelativeLayout;
 
 import com.glideroustigers.nfclogon.R;
 
+/**
+ * Class to create a wizard view from XML layout files.
+ * @author Alexandre Cormier
+ */
 public class Wizard extends RelativeLayout
 {
+    // the view containing the different pages
     private WizardPager pager;
+
+    // the page dots at the bottom
     private WizardDots dots;
 
+    // the index of the currently selected page
     private int currentPage;
+
+    // the number of pages in this wizard
     private int pageCount;
 
+    /**
+     * Construct a new wizard from data provided by the XML layout.
+     * @param context the context to use.
+     * @param attrs the attributes to set.
+     */
     public Wizard(Context context, AttributeSet attrs)
     {
         super(context, attrs);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onFinishInflate()
     {
@@ -30,7 +48,7 @@ public class Wizard extends RelativeLayout
         }
         this.removeAllViews();
 
-        this.currentPage = 1;
+        this.currentPage = 0;
         this.pageCount = children.length;
 
         this.dots = new WizardDots(this.getContext(), children.length);
@@ -49,23 +67,38 @@ public class Wizard extends RelativeLayout
         this.addView(this.pager);
     }
 
-    public void nextPage()
+    /**
+     * Selects the page at the index provided.
+     * @param index index of the page to select.
+     * @return whether or not the page was set.
+     */
+    public boolean setPage(int index)
     {
-        if (this.currentPage < this.pageCount)
+        if (index >= 0 && index < this.pageCount)
         {
-            this.dots.nextPage();
-            this.pager.nextPage();
-            this.currentPage++;
+            this.dots.setPage(index);
+            this.pager.setPage(index);
+            this.currentPage = index;
+            return true;
         }
+        return false;
     }
 
-    public void previousPage()
+    /**
+     * Goes to the next page.
+     * @return whether or not the page was set.
+     */
+    public boolean nextPage()
     {
-        if (this.currentPage > 0)
-        {
-            this.dots.previousPage();
-            this.pager.previousPage();
-            this.currentPage--;
-        }
+        return this.setPage(this.currentPage + 1);
+    }
+
+    /**
+     * Goes to the previous page.
+     * @return whether or not the page was set.
+     */
+    public boolean previousPage()
+    {
+        return this.setPage(this.currentPage - 1);
     }
 }

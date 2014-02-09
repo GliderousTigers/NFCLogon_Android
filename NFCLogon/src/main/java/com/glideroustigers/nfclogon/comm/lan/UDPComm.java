@@ -18,6 +18,7 @@ import java.util.LinkedList;
 
 /**
  * Class for UDP communication between the device and the PC.
+ * @author Alexandre Cormier
  */
 public class UDPComm extends Comm
 {

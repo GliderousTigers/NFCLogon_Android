@@ -2,6 +2,7 @@ package com.glideroustigers.nfclogon.comm.packets;
 
 /**
  * Exception thrown when a received packet's format is incorrect.
+ * @author Alexandre Cormier
  */
 public class InvalidPacketException extends Exception
 {

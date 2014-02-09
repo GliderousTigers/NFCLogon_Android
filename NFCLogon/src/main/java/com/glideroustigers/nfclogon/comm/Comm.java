@@ -10,6 +10,7 @@ import java.util.logging.LogRecord;
 /**
  * Class to represent the communication between the Android device
  * and the PC. A subclass should be created for each communication mean.
+ * @author Alexandre Cormier
  */
 public abstract class Comm implements Closeable
 {

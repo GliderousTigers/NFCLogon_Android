@@ -4,6 +4,7 @@ import com.glideroustigers.nfclogon.utils.ByteUtils;
 
 /**
  * Class used to represent a field in a packet.
+ * @author Alexandre Cormier
  */
 public class PacketField
 {
@@ -20,7 +21,7 @@ public class PacketField
     }
 
     /**
-     * Constructs a new field object froma received packet.
+     * Constructs a new field object from a received packet.
      * @param packetData the packet's data.
      * @param offset the offset at which the desired field is located.
      */

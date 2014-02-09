@@ -2,6 +2,7 @@ package com.glideroustigers.nfclogon.comm;
 
 /**
  * Interface for a communication listener, to get the data received.
+ * @author Alexandre Cormier
  */
 public interface CommListener
 {

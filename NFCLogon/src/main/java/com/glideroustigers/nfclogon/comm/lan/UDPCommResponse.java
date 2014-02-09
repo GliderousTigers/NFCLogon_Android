@@ -9,6 +9,7 @@ import java.net.SocketAddress;
 
 /**
  * Class to represent a response received over UDP.
+ * @author Alexandre Cormier 
  */
 public class UDPCommResponse extends CommResponse
 {

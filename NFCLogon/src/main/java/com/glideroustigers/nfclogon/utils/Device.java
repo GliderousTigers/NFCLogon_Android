@@ -12,6 +12,7 @@ import java.util.UUID;
 
 /**
  * Utility class to get information about the device.
+ * @author Alexandre Cormier
  */
 public abstract class Device
 {

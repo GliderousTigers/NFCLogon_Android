@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * Utility class to perform operations on bytes and byte arrays.
+ * @author Alexandre Cormier
  */
 public abstract class ByteUtils
 {

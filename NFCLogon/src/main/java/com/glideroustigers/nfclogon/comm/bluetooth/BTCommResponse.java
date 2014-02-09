@@ -7,6 +7,7 @@ import java.io.IOException;
 
 /**
  * Class to represent a response received over Bluetooth.
+ * @author Alexandre Cormier
  */
 public class BTCommResponse extends CommResponse
 {

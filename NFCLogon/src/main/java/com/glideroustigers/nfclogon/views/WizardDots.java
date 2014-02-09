@@ -14,10 +14,10 @@ import com.glideroustigers.nfclogon.R;
 
 class WizardDots extends LinearLayout
 {
-    private final int dotSize = this.getResources().getDimensionPixelSize(R.dimen.wizard_dots_size);
-    private final int selectedDotSize = this.getResources().getDimensionPixelSize(R.dimen.wizard_dots_selected_size);
-    private final int dotMargin = this.getResources().getDimensionPixelSize(R.dimen.wizard_dots_padding);
-    private final Paint paint = new Paint();
+    private final int dotSize;
+    private final int selectedDotSize;
+    private final int dotMargin;
+    private final Paint paint;
 
     private Dot[] dots;
     private int currentPage;
@@ -26,6 +26,11 @@ class WizardDots extends LinearLayout
     {
         super(context);
 
+        this.dotSize = this.getResources().getDimensionPixelSize(R.dimen.wizard_dots_size);
+        this.selectedDotSize = this.getResources().getDimensionPixelSize(R.dimen.wizard_dots_selected_size);
+        this.dotMargin = this.getResources().getDimensionPixelSize(R.dimen.wizard_dots_padding);
+
+        this.paint = new Paint();
         this.paint.setColor(Color.WHITE);
         this.paint.setStyle(Paint.Style.FILL);
 
@@ -41,43 +46,39 @@ class WizardDots extends LinearLayout
         this.dots[0].setPageSelected(true);
     }
 
-    void nextPage()
+    void setPage(int index)
     {
-        this.dots[currentPage++].setPageSelected(false);
-        this.dots[currentPage].setPageSelected(true);
-    }
-
-    void previousPage()
-    {
-        this.dots[currentPage--].setPageSelected(false);
-        this.dots[currentPage].setPageSelected(true);
+        this.dots[this.currentPage].setPageSelected(false);
+        this.currentPage = index;
+        this.dots[this.currentPage].setPageSelected(true);
     }
 
     private class Dot extends View
     {
+        private LayoutParams params;
+
         private Dot(Context context)
         {
             super(context);
 
-            LayoutParams params = new LayoutParams(dotSize, dotSize);
-            params.setMargins(dotMargin, dotMargin, dotMargin, dotMargin);
-            this.setLayoutParams(params);
+            this.params = new LayoutParams(dotSize, dotSize);
+            this.params.setMargins(dotMargin, dotMargin, dotMargin, dotMargin);
+            this.setLayoutParams(this.params);
         }
 
         private void setPageSelected(boolean selected)
         {
-            LayoutParams params = (LayoutParams) this.getLayoutParams();
             if (selected)
             {
-                params.width = selectedDotSize;
-                params.height = selectedDotSize;
+                this.params.width = selectedDotSize;
+                this.params.height = selectedDotSize;
             }
             else
             {
-                params.width = dotSize;
-                params.height = dotSize;
+                this.params.width = dotSize;
+                this.params.height = dotSize;
             }
-            this.setLayoutParams(params);
+            this.setLayoutParams(this.params);
         }
 
         @Override
