@@ -60,7 +60,7 @@ public final class Crypto
      * @throws NoSuchAlgorithmException if the device does not support RSA.
      * @throws InvalidKeySpecException if the key specs are invalid.
      */
-    public static PublicKey getPublicKey(BigInteger modulus, BigInteger exponent) throws NoSuchAlgorithmException, InvalidKeySpecException
+    public static RSAPublicKey getPublicKey(BigInteger modulus, BigInteger exponent) throws NoSuchAlgorithmException, InvalidKeySpecException
     {
         return (RSAPublicKey) KeyFactory.getInstance(KEY_TRANSPORT_ALGORITHM).generatePublic(new RSAPublicKeySpec(modulus, exponent));
     }

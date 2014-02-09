@@ -16,19 +16,45 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+/**
+ * Class for UDP communication between the device and the PC.
+ */
 public class UDPComm extends Comm
 {
+    // whether to broadcast or not
     private volatile boolean broadcast;
+
+    // socket on which to send and receive data
     private DatagramSocket socket;
+
+    // packet to broadcast for device discovery
     private DatagramPacket broadcastPacket;
+
+    // buffer for the data we receive
     private byte[] buffer;
+
+    // packet to receive data with
     private DatagramPacket receivePacket;
 
-    public UDPComm(Context context, int port) throws IOException
+    /**
+     * Constructs a new {@link com.glideroustigers.nfclogon.comm.lan.UDPComm} that will
+     * listen on the specified port.
+     * @param port the port to listen on.
+     * @throws IOException if the socket cannot be created.
+     */
+    public UDPComm(int port) throws IOException
     {
-        this(context, null, port);
+        this(null, null, port);
     }
 
+    /**
+     * Constructs a new {@link com.glideroustigers.nfclogon.comm.lan.UDPComm} that will
+     * broadcast data on the specified port.
+     * @param context the context to use.
+     * @param broadcastData data to broadcast.
+     * @param port port to broadcast on.
+     * @throws IOException if the socket cannot be created.
+     */
     public UDPComm(Context context, byte[] broadcastData, int port) throws IOException
     {
         super();
@@ -48,6 +74,9 @@ public class UDPComm extends Comm
         this.receivePacket = new DatagramPacket(this.buffer, this.buffer.length);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void run()
     {
@@ -78,7 +107,7 @@ public class UDPComm extends Comm
         }
         catch (IOException e)
         {
-
+            // ok... execute finally.
         }
         finally
         {
@@ -86,11 +115,15 @@ public class UDPComm extends Comm
         }
     }
 
+    /**
+     * Stops the broadcast.
+     */
     public void stopBroadcasting()
     {
         this.broadcast = false;
     }
 
+    // gets the broadcast address
     private InetAddress getBroadcastAddress(Context context) throws UnknownHostException
     {
         DhcpInfo dhcp = ((WifiManager) context.getSystemService(Context.WIFI_SERVICE)).getDhcpInfo();

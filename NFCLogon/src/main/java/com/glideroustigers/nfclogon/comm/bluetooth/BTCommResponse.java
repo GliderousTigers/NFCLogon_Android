@@ -5,6 +5,9 @@ import com.glideroustigers.nfclogon.comm.CommResponse;
 
 import java.io.IOException;
 
+/**
+ * Class to represent a response received over Bluetooth.
+ */
 public class BTCommResponse extends CommResponse
 {
     BTCommResponse(Comm comm, byte[] data)
@@ -12,6 +15,9 @@ public class BTCommResponse extends CommResponse
         super(comm, data);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void reply(byte[] data) throws IOException
     {

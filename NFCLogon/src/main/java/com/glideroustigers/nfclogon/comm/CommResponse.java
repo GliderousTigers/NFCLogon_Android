@@ -5,7 +5,8 @@ import android.os.Handler;
 import java.io.IOException;
 
 /**
- * Class to encapsulate a the data received from a communication.
+ * Class to encapsulate the data received from a communication and provide
+ * some methods that will be useful when receiving data, namely to reply.
  */
 public abstract class CommResponse
 {
