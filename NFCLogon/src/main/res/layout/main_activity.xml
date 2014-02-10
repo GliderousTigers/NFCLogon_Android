@@ -8,7 +8,8 @@
     <com.glideroustigers.nfclogon.views.Wizard
         android:id="@+id/wizard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:keepScreenOn="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
